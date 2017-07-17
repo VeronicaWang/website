@@ -1,0 +1,36 @@
+{
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "doc_comment": {
+      
+    },
+    "jscs": {
+      
+    },
+    "browser-extension": {
+      
+    },
+    "angular": {
+      
+    },
+    "bootstrap": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-extension": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "browser",
+    "jquery"
+  ]
+}

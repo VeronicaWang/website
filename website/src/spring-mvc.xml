@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:util="http://www.springframework.org/schema/util"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd"> 
+   <!-- 自动扫描 -->
+   <context:component-scan base-package="com.jredu.ssm.controller">
+   </context:component-scan>
+   <!-- 添加数据转换的注解驱动 -->
+   <mvc:annotation-driven>
+    	<mvc:message-converters>
+    		<bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+    		<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    	</mvc:message-converters>
+   </mvc:annotation-driven>
+   <!-- 设置视图解析器 -->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/" />  
+        <property name="suffix" value=".jsp" />  
+   </bean>  
+    <!-- 上传组件 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<!-- 设置上传的编码格式 -->
+    	<property name="defaultEncoding" value="utf-8"/>
+    	<!-- 设置最大上传大小 -->
+    	<property name="maxUploadSize" value="5242880"/>
+    </bean>
+       <!--拦截器配置 -->
+    <!-- <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<bean class="com.jredu.spring.interceptor.FirstInterceptor">
+    		</bean>
+    	</mvc:interceptor>
+    </mvc:interceptors> -->
+    <!-- 异常处理 -->
+    <!-- 配置使用 SimpleMappingExceptionResolver 来映射异常 
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionAttribute" value="error"></property>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.ArrayIndexOutOfBoundsException">error</prop>
+				<prop key="java.lang.ArithmeticException">error</prop>
+			</props>
+		</property>
+	</bean>	 -->
+</beans>
+
+
+
